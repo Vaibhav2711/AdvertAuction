@@ -1,0 +1,26 @@
+{
+  "name": "advert-auction",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^2.0.9",
+    "next": "12.2.0",
+    "next-routes-extended": "^1.7.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.1.3",
+    "solc": "^0.8.15",
+    "web3": "^1.7.4"
+  },
+  "devDependencies": {
+    "eslint": "8.18.0",
+    "eslint-config-next": "12.2.0"
+  }
+}

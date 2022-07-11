@@ -13,7 +13,7 @@ class AdvertAuction extends Component {
     currentBid: this.props.bid,
     image: '/test.jpg',
     placeholder: '',
-    value: '',
+    text: '',
     content: 'Advertisement Text'
   }
 
@@ -23,6 +23,16 @@ class AdvertAuction extends Component {
   }
   handleCallBack = (img) =>{
     this.setState({placeholder:img});
+  }
+
+  handleBid = (value) =>{
+    this.setState({disable: false, currentBid: value})
+  }
+
+  onSubmit = (event) => {
+    event.preventDefault();
+    this.setState({image: this.state.placeholder, content : this.state.text })
+    this.setState({disable: true})
   }
 
   render(){
@@ -52,8 +62,7 @@ class AdvertAuction extends Component {
                 <br />
                 <Grid.Row>
                   <h3>Bid (In ether)</h3>
-                  <BidInput />
-                  {this.setState({disable:false})}
+                  <BidInput  handleBid = {this.handleBid}/>
                 </Grid.Row>
                 <br />
                 <Grid.Row>
@@ -62,11 +71,6 @@ class AdvertAuction extends Component {
                 <br />
                 <Grid.Row>
                   <UploadAndDisplayImage  parentCallBack = {this.handleCallBack}/>
-                  <Popup
-                    trigger = {<Button icon = 'add' content = 'Upload Image' disabled = {this.state.disable} onClick = {this.onClick} />} 
-                    content = "Upload the jpg image of the advertisement"
-                    on = 'hover'
-                  />
                 </Grid.Row>
                 <br />
                 <Grid.Row>
@@ -74,7 +78,7 @@ class AdvertAuction extends Component {
                   <Form onSubmit = {this.onSubmit}>
                       <TextArea disabled = {this.state.disable} 
                       value = {this.state.text}
-                      onChange = {(event) => this.setState({content: event.target.value})}/>
+                      onChange = {(event) => this.setState({text: event.target.value})}/>
                       <Button disabled = {this.state.disable} primary>Submit</Button>
                   </Form>
                 </Grid.Row>

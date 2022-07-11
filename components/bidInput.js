@@ -12,15 +12,16 @@ class BidInput extends Component{
 		value: 0
 	}
 
+	constructor(props){
+		super(props);
+	}
+
 	onClick = async (event) =>{
 		event.preventDefault();
 		const accounts = await web3.eth.getAccounts();
 		await AdvertisementAuction.methods.submitBid().send(
 			{from: accounts[0], value: this.state.value});
-		console.log('hello');
-		window.location.reload();
-		//Router.pushRoute('/');
-		console.log('refreshed');
+		this.props.handleBid(this.state.value);
 	}
 	render(){
 		return(
